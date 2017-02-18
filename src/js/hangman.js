@@ -6,14 +6,14 @@
 // save word to secretWord string
 
 var secretWord = "maintain";
-var guessLetter;
-var incorrectGuesses = new Array;
-var correctGuesses = new Array;
+var guess;
+var wrongBin = new Array;
+var correctBin = new Array;
 var count = 0;
 var regex = /^[a-zA-Z]$/;
 var display = displayUnderscores();
 var status = 0;
-// var gameOver = false;
+var valid;
 
 // Display a set of underscores equal to length of secretWord
 function displayUnderscores(){
@@ -38,39 +38,54 @@ function userLoses(){
   alert("Computer Wins!");
 }
 
+function enterGuess(){
+  return prompt("Enter a letter!").toUpperCase();
+}
+
+function validateGuess(guess, correctBin, wrongBin){
+  if (!guess.match(regex)) return false; // Alert the format of the letter is wrong and User must enter letter from alphabet
+  else if (correctBin.indexOf(guess) > -1 || wrongBin.indexOf(guess) > -1) return false; // Alert the letter has already been used and tell User to enter another one
+  else return true;
+}
+
+function rightGuess(guess, correctBin){
+  correctBin.push(guess);
+}
+
+function wrongGuess(guess, wrongBin){
+  wrongBin.push(guess);
+}
+
+function displayString(display, secretWord, guess){
+  for (i=0; i<secretWord.length; i++) {
+    if (secretWord.toUpperCase().charAt(i) === guess) {
+      display = display.substr(0,i) + guess + display.substr(i+1);
+    }
+  }
+  return display;
+}
+
 while (status == 0) {
-  guessLetter = prompt("Enter a letter!").toUpperCase();
+  guess = enterGuess();
+  valid = validateGuess(guess, correctBin, wrongBin);
 
-  if (!guessLetter.match(regex)) {
-    alert("You must enter a single letter from the alphabet! Numbers, special characters, and string of letters are not allowed.");// Alert the format of the letter is wrong and User must enter letter from alphabet
-    continue;  // This skips the rest of the code below and brings the execution back to the beginning of the loop ‘while(!(gameOver=false))’
-  }
-
-  //Check if guesses entered have not been used before
-  else if (correctGuesses.indexOf(guessLetter) > -1 || incorrectGuesses.indexOf(guessLetter) > -1) {
-    alert("You have already entered letter: " + guessLetter.toUpperCase() + ". Please enter a different letter!");  // Alert the letter has already been used and tell User to enter another one
-    continue;
-  }
-
-  else if (secretWord.toUpperCase().indexOf(guessLetter) > -1) {
-      correctGuesses.push(guessLetter);
-      for (i=0; i<secretWord.length; i++) {
-        if (secretWord.toUpperCase().charAt(i) === guessLetter) {
-          display = display.substr(0,i) + guessLetter + display.substr(i+1);
-        }
-      }
-  }
-  else {
-    incorrectGuesses.push(guessLetter);
-    count+=1;
+  if (valid) {
+    if (secretWord.toUpperCase().indexOf(guess) > -1) {
+      rightGuess(guess, correctBin);
+      display = displayString(display, secretWord, guess);
+    }
+    else {
+      wrongGuess(guess, wrongBin);
+      count+=1;
+    }
   }
 
   status = gameStatus(count, display, secretWord);
-  // }
+
   console.log("Display is: "+ display);
   console.log("Secret word is: " + secretWord);
-  console.log("Incorrect Guesses: " + incorrectGuesses);
-  console.log("Correct Guesses: " + correctGuesses);
+  console.log("Wrong Guesses: " + wrongBin);
+  console.log("Correct Guesses: " + correctBin);
   console.log("Misses: " + count);
 }
 

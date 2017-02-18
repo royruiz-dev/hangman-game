@@ -21,18 +21,6 @@
 		"oAP": "\/build\/build",
 		"oF": 0
 		},
-	"\/config\/proxy.conf": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/build\/config\/proxy.conf",
-		"oF": 1
-		},
-	"\/config\/start.bash": {
-		"ft": 8192,
-		"oA": 1,
-		"oAP": "\/build\/config\/start.bash",
-		"oF": 1
-		},
 	"\/config\/stop.bash": {
 		"ft": 8192,
 		"oA": 1,
