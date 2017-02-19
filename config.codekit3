@@ -21,6 +21,18 @@
 		"oAP": "\/build\/build",
 		"oF": 0
 		},
+	"\/config\/proxy.conf": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/build\/config\/proxy.conf",
+		"oF": 0
+		},
+	"\/config\/start.bash": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/build\/config\/start.bash",
+		"oF": 0
+		},
 	"\/config\/stop.bash": {
 		"ft": 8192,
 		"oA": 1,
@@ -46,20 +58,187 @@
 		"uDQ": 0,
 		"uUN": 0
 		},
+	"\/src\/img\/Base-and-shadow.png": {
+		"ft": 32768,
+		"iS": 2607,
+		"oA": 0,
+		"oAP": "\/build\/img\/Base-and-shadow.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Base-and-shadow@2x.png": {
+		"ft": 32768,
+		"iS": 5797,
+		"oA": 0,
+		"oAP": "\/build\/img\/Base-and-shadow@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/body.png": {
+		"ft": 32768,
+		"iS": 1643,
+		"oA": 0,
+		"oAP": "\/build\/img\/body.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/body@2x.png": {
+		"ft": 32768,
+		"iS": 3366,
+		"oA": 0,
+		"oAP": "\/build\/img\/body@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Button.png": {
+		"ft": 32768,
+		"iS": 1092,
+		"oA": 0,
+		"oAP": "\/build\/img\/Button.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Button@2x.png": {
+		"ft": 32768,
+		"iS": 2760,
+		"oA": 0,
+		"oAP": "\/build\/img\/Button@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/head.png": {
+		"ft": 32768,
+		"iS": 2222,
+		"oA": 0,
+		"oAP": "\/build\/img\/head.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/head@2x.png": {
+		"ft": 32768,
+		"iS": 4788,
+		"oA": 0,
+		"oAP": "\/build\/img\/head@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/left-arm.png": {
+		"ft": 32768,
+		"iS": 2253,
+		"oA": 0,
+		"oAP": "\/build\/img\/left-arm.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/left-arm@2x.png": {
+		"ft": 32768,
+		"iS": 4971,
+		"oA": 0,
+		"oAP": "\/build\/img\/left-arm@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/left-leg.png": {
+		"ft": 32768,
+		"iS": 671,
+		"oA": 0,
+		"oAP": "\/build\/img\/left-leg.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/left-leg@2x.png": {
+		"ft": 32768,
+		"iS": 1376,
+		"oA": 0,
+		"oAP": "\/build\/img\/left-leg@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/right-arm.png": {
+		"ft": 32768,
+		"iS": 2275,
+		"oA": 0,
+		"oAP": "\/build\/img\/right-arm.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/right-arm@2x.png": {
+		"ft": 32768,
+		"iS": 4986,
+		"oA": 0,
+		"oAP": "\/build\/img\/right-arm@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/right-leg.png": {
+		"ft": 32768,
+		"iS": 705,
+		"oA": 0,
+		"oAP": "\/build\/img\/right-leg.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/right-leg@2x.png": {
+		"ft": 32768,
+		"iS": 1370,
+		"oA": 0,
+		"oAP": "\/build\/img\/right-leg@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Scaffold-side.png": {
+		"ft": 32768,
+		"iS": 406,
+		"oA": 0,
+		"oAP": "\/build\/img\/Scaffold-side.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Scaffold-side@2x.png": {
+		"ft": 32768,
+		"iS": 978,
+		"oA": 0,
+		"oAP": "\/build\/img\/Scaffold-side@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Scaffold-top-rope.png": {
+		"ft": 32768,
+		"iS": 4220,
+		"oA": 0,
+		"oAP": "\/build\/img\/Scaffold-top-rope.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Scaffold-top-rope@2x.png": {
+		"ft": 32768,
+		"iS": 8857,
+		"oA": 0,
+		"oAP": "\/build\/img\/Scaffold-top-rope@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Welcome To The Hangm.png": {
+		"ft": 32768,
+		"iS": 15359,
+		"oA": 0,
+		"oAP": "\/build\/img\/Welcome To The Hangm.png",
+		"oF": 0,
+		"opt": 1
+		},
+	"\/src\/img\/Welcome To The Hangm@2x.png": {
+		"ft": 32768,
+		"iS": 37867,
+		"oA": 0,
+		"oAP": "\/build\/img\/Welcome To The Hangm@2x.png",
+		"oF": 0,
+		"opt": 1
+		},
 	"\/src\/js\/dump-all-words.js": {
 		"ft": 64,
 		"mi": 0,
 		"oA": 0,
 		"oAP": "\/build\/js\/dump-all-words-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/src\/js\/hangman-min.js": {
-		"ft": 64,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "\/build\/js\/hangman-min-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0

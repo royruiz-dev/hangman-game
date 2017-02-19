@@ -5,7 +5,7 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name="apple-mobile-web-app-capable" content="yes")
     :css
-      @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Source+Serif+Pro:400,700');
+      @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700|Ceviche+One');
 
       html {
         height: 100%;
@@ -14,12 +14,210 @@
         height: 100%;
         margin: 0;
         padding: 0;
-        background-color: white;
+        background-color: #F8DF5C;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-    -# %script(src='js/jquery-3.1.1.js')
-    %script(src='js/hangman.js')
+      .main {
+        width: 500px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .welcome {
+        font-family: 'Ceviche One', cursive;
+        font-size: 64px;
+        display: block;
+        margin: 0 auto;
+      }
+      .base, .button {
+        display: block;
+        margin: 0 auto;
+      }
+      .hangmanBuild {
+        -# height: 405px;
+        margin: 30px auto 0 auto;
+        display: block;
+      }
+      .scaffoldSide {
+        margin: auto 37px 0 auto;
+        display: block;
+      }
+      .hangmanMiddle {
+        width: 225px;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+      .wordChallenge-wrapper {
+        display: block;
+        margin: 30px auto;
+      }
+      .wordChallenge {
+        display: inline-block;
+        margin: 0 auto;
+      }
+      .left-of-scaffoldSide {
+        -# width: 171px;
+        position: absolute;
+      }
+      .scaffoldTop-and-Rope {
+        margin-left: 59px;
+        top: 0px;
+      }
+      .hangmanBottom {
+        display: block;
+        margin: 0 auto;
+      }
+      .content-wrapper{
+        width: 280px;
+        top: 298px;
+        left: 80px;
+        position: absolute;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        letter-spacing: 2.5px;
+      }
+      .content-hr {
+        width: 3em;
+        background-color: black;
+        height: 1px;
+        border: 0;
+      }
+      .letterBox-hr {
+        width: 1em;
+        background-color: black;
+        height: 1px;
+        border: 0;
+      }
+      .letterBox {
+        width: 58px;
+        -# border-style: solid;
+        border-color: #000000;
+        border-bottom: 1px solid black;
+        display: inline-block;
+        margin: 0 auto;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 48px;
+        font-weight: 700;
+        color: #A83B70;
+        line-height: 1.2em;
+      }
+      .clickLetter {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #A83B70;
+        line-height: 1.2em;
+      }
+      .alphabet-wrapper {
+        display: inline;
+        margin: 10px auto 0 auto;
+      }
+      .alphabet {
+        width: 25px;
+        display: inline-block;
+        margin: 0 auto;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 28px;
+        font-weight: 300;
+        color: #000000;
+        line-height: 1.2em;
+      }
+    -# %script(src='js/hangman.js')
   %body
-    %h1
-      Hangman
+    .main
+      .content-wrapper
+        %p
+          Game Status Winner //alert Game winner
+        %hr.content-hr
+        %p
+          GUESSES REMAINING: //count variable from JS
+        %p
+          INCORRECT GUESSES: //wrongBin values separated by commas
+      .welcome
+        Welcome to the Hangman Game!
+      .hangmanBuild
+        .hangmanMiddle
+          .left-of-scaffoldSide
+            %img.scaffoldTop-and-Rope(src='img/Scaffold-top-rope.png')
+          %img.scaffoldSide(src='img/Scaffold-side.png')
+        .hangmanBottom
+          %img.base(src='img/Base-and-shadow.png')
+      .wordChallenge-wrapper
+        .wordChallenge
+          .letterBox
+            M
+          .letterBox
+            A
+          .letterBox
+            I
+          .letterBox
+            N
+          .letterBox
+            T
+          .letterBox
+            A
+          .letterBox
+            I
+          .letterBox
+            N
+        .alphabet-wrapper
+          .alphabet
+            A
+          .alphabet
+            B
+          .alphabet
+            C
+          .alphabet
+            D
+          .alphabet
+            E
+          .alphabet
+            F
+          .alphabet
+            G
+          .alphabet
+            H
+          .alphabet
+            I
+          .alphabet
+            J
+          .alphabet
+            K
+          .alphabet
+            L
+          .alphabet
+            M
+          .alphabet
+            N
+          .alphabet
+            O
+          .alphabet
+            P
+          .alphabet
+            Q
+          .alphabet
+            R
+          .alphabet
+            S
+          .alphabet
+            T
+          .alphabet
+            U
+          .alphabet
+            V
+          .alphabet
+            W
+          .alphabet
+            X
+          .alphabet
+            Y
+          .alphabet
+            Z
+          .clickLetter
+            Click a letter
+      %img.button(src='img/Button.png')
+
+
