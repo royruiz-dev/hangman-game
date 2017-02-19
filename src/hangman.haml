@@ -126,9 +126,16 @@
         line-height: 1.2em;
       }
     %script(src='js/hangman.js')
+    :javascript
+      // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
+      // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+      document.addEventListener('DOMContentLoaded', function(event) {
+        var btn = document.getElementById('playGame');
+        btn.addEventListener('click', runHangman);
+      });
   %body
     %input{:id => 'loadWord', :type => 'button', :value => 'Load Word', :onclick => 'userAction()'}
-    %input{:id => 'playGame', :type => 'button', :value => 'Play Game', :onclick => 'runHangman()'}
+    %input#playGame(type='button' value='Play Game')
     .main
       .content-wrapper
         %p
