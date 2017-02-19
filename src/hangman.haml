@@ -125,8 +125,10 @@
         color: #000000;
         line-height: 1.2em;
       }
-    -# %script(src='js/hangman.js')
+    %script(src='js/hangman.js')
   %body
+    %input{:id => 'loadWord', :type => 'button', :value => 'Load Word', :onclick => 'userAction()'}
+    %input{:id => 'playGame', :type => 'button', :value => 'Play Game', :onclick => 'runHangman()'}
     .main
       .content-wrapper
         %p
@@ -219,5 +221,6 @@
           .clickLetter
             Click a letter
       %img.button(src='img/Button.png')
+        -# =link_to "Play", 'js/hangman.js', :onclick => "runHangman()"
 
 
