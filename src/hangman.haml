@@ -21,11 +21,13 @@
       .main {
         width: 500px;
         margin: 0 auto;
-        text-align: center;
+        -# text-align: center;
+        -# display: block;
       }
       .welcome {
         font-family: 'Ceviche One', cursive;
         font-size: 64px;
+        text-align: center;
         display: block;
         margin: 0 auto;
       }
@@ -69,15 +71,15 @@
         margin: 0 auto;
       }
       .content-wrapper{
-        width: 280px;
+        width: 250px;
         top: 298px;
-        left: 80px;
+        left: 15px;
         position: absolute;
-        text-align: center;
+        -# text-align: center;
         font-family: 'Source Sans Pro', sans-serif;
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 300;
-        letter-spacing: 2.5px;
+        letter-spacing: 1px;
       }
       .content-hr {
         width: 3em;
@@ -96,6 +98,7 @@
         -# border-style: solid;
         border-color: #000000;
         border-bottom: 1px solid black;
+        text-align: center;
         display: inline-block;
         margin: 0 auto;
         font-family: 'Source Sans Pro', sans-serif;
@@ -125,19 +128,22 @@
         color: #000000;
         line-height: 1.2em;
       }
+      .guessesLeft {
+
+      }
     %script(src='js/hangman.js')
   %body
     %input{:id => 'loadWord', :type => 'button', :value => 'Load Word', :onclick => 'userAction()'}
     %input{:id => 'playGame', :type => 'button', :value => 'Play Game', :onclick => 'runHangman()'}
     .main
       .content-wrapper
-        %p
-          Game Status Winner //alert Game winner
+        .gameWinner
+          Game winner: //alert Game winner
         %hr.content-hr
-        %p
-          GUESSES REMAINING: //count variable from JS
-        %p
-          INCORRECT GUESSES: //wrongBin values separated by commas
+        .guessesLeft
+          Guesses remaining: //count variable from JS
+        .wrongGuesses
+          Incorrect guesses: //wrongBin values separated by commas
       .welcome
         Welcome to the Hangman Game!
       .hangmanBuild
