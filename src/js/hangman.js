@@ -25,7 +25,10 @@ function filterWords(difficulty, minLength, maxLength) {
 
 function reqListener() {
   if (this.readyState === 4) {
-    if (this.status === 200) wordBank = this.responseText;
+    if (this.status === 200) {
+      wordBank = this.responseText;
+      initializeNewGame();
+    }
     else blockScreen();
   }
 }
