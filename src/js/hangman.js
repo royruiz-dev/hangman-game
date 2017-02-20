@@ -22,16 +22,11 @@ function fetchWord() {
   xhttp.send(null);
 }
 
-//Variables for event handlers
-// document.addEventListener('DOMContentLoaded', function() {
-
-// });
-
 
 var secretWord = "maintain";
 var guess, valid;
 var wrongBin, correctBin = new Array;
-var count, status;
+var count, status, guessesAllowed;
 var regex = /^[a-zA-Z]$/;
 var display = "";
 
@@ -44,7 +39,7 @@ function displayInitialize() {
 // Display a set of underscores equal to length of secretWord
 function displayUnderscores() {
   var word = document.getElementById('wordChallenge');
-  var displayBlanks = secretWord.split('').map(function(){return "<div class='letterBox'></div>"}).join(' ');
+  var displayBlanks = secretWord.replace(/./g,"<div class='letterBox'></div> ")
   word.innerHTML = displayBlanks;
 }
 
@@ -61,9 +56,10 @@ function validateGuess(guess, correctBin, wrongBin) {
 
 //display word with correct guesses
 function displayString(secretWord, guess) {
+  var letterBoxes = document.getElementsByClassName('letterBox');
   for (i=0; i<secretWord.length; i++) {
     if (secretWord.toUpperCase().charAt(i) === guess) {
-      document.getElementsByClassName('letterBox')[i].innerHTML = guess;
+      letterBoxes[i].innerHTML = guess;
       display = display.substr(0,i) + guess + display.substr(i+1);
     }
   }
@@ -79,18 +75,18 @@ function rightGuess(guess, correctBin) {
 function wrongGuess(wrongBin) {
   var wrongBucket = document.getElementById('wrongGuesses');
   var displayWrongGuesses = wrongBin.map(function(x){return "<div class='wrongLetter'>" + x + "</div>"}).join(', ');
-  wrongBucket.innerHTML = displayWrongGuesses;
+  wrongBucket.innerHTML = "Incorrect Guesses: " + displayWrongGuesses;
 }
 
 //Display guesses remaining
 function guessesRemaining(count){
   var guessesLeft = document.getElementById('guessesLeft');
-  guessesLeft.innerHTML = "<div class='guessCount'>" + (6 - count) + "</div>";
+  guessesLeft.innerHTML = "Guesses remaining: <div class='guessCount'>" + (guessesAllowed - count) + "</div>";
 }
 
 //Determine status of the the game
 function gameStatus(count, display, secretWord) {
-  if (count > 6) return -1;  // Computer wins
+  if (count >= guessesAllowed) return -1;  // Computer wins
   else if (display === secretWord.toUpperCase()) return 1; // User wins
   else return 0;  //Let's keep playing
 }
@@ -116,12 +112,15 @@ function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
 }
 
 //Initializes all variables necessary to reset game
-function resetGame(){
+function resetGame() {
   status = 0;
   count = 0;
   correctBin = [];
   wrongBin = [];
   display = "";
+  guessesAllowed = 6;
+
+  guessesRemaining(count);
 
   document.getElementById('wordChallenge').innerHTML = "";
 }

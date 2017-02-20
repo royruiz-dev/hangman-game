@@ -159,14 +159,10 @@
     %input#playGame(type='button' value='Play Game')
     .main
       .content-wrapper
-        .gameWinner
-          Game winner: //alert Game winner
-        %hr.content-hr
+        #gameWinner
         .guessesLeftTitle
-          Guesses remaining:
           #guessesLeft
-        .wrongGuessesTitle
-          Incorrect guesses:
+        #wrongGuessesTitle
           #wrongGuesses
       .welcome
         Welcome to the Hangman Game!
