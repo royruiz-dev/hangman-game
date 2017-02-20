@@ -100,7 +100,8 @@ function userWins() {
 
 //Alert computer wins
 function userLoses() {
-  alert("Computer Wins!");
+  var winner = document.getElementById('gameWinner');
+  winner.innerHTML = "Secret Keeper Wins!";
 }
 
 //Write to the console log for debugging purposes

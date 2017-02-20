@@ -7,8 +7,8 @@
   ✔ Modify wrongGuess
   ✔ Modify guessesRemaining
   ✔ Modify userWins
-  Modify userLoses
-  Modify resetGame
+  ✔ Modify userLoses
+  ✔ Modify resetGame
 
   Run Hangman from ‘click’ handlers on alphabet letters
 
