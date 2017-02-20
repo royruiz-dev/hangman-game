@@ -1,9 +1,11 @@
-  Create function resetGame
+  ✔︎ Create function resetGame
 
-  Change displayUnderscores function based on what we did
-  Change displayString function to output letters in HTML, not console
-  Delete rightGuess
-  Modify wrongGuess
+  ✔ Change displayUnderscores function based on what we did
+  ✔ Change displayString function to output letters in HTML, not console
+  ✘ Delete rightGuess
+  - RR: Cannot delete rightGuess because even though I'm not using it to show in HTML, rightGuess function is pushing the letters into correctBin array, which I use in the validateGuesses function
+  ✔ Modify wrongGuess
+  ✔ Modify guessesRemaining
   Modify userWins
   Modify userLoses
   Modify resetGame

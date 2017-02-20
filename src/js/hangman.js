@@ -5,38 +5,53 @@
 // Assign count = 1 to return only 1 word
 // save word to secretWord string
 
+var wordCount, difficulty, minLength, maxLength, start;
+
 function reqListener () {
-  console.log(this.responseText);
+  wordCount = this.responseText; //.split('\n').length
+  console.log(wordCount);
 }
 
-function userAction() {
+function fetchWord() {
   //http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
   var start;  //Save record to array for total count?
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/words?difficulty=8&start=5278&count=1", false);
-  xhttp.setRequestHeader("Content-type", "application/json");
+  xhttp.open("GET", "/words?difficulty=8&start=5278" + "&count=1", true);
   xhttp.addEventListener("load", reqListener);
   xhttp.send(null);
-  var response = JSON.parse(xhttp.responseText);
 }
 
+//Variables for event handlers
+document.addEventListener('DOMContentLoaded', function() {
+  var word = document.getElementById('wordChallenge');
+  word.addEventListener('click',displayUnderscores(word));
+});
+
+
 var secretWord = "maintain";
-var guess;
-var wrongBin = new Array;
-var correctBin = new Array;
+var guess, valid;
+var wrongBin, correctBin = new Array;
 var count = 0;
 var regex = /^[a-zA-Z]$/;
-var display = displayUnderscores();
 var status = 0;
-var valid;
+var display = "";
 
+
+//Initializes all variables necessary to reset game
+//How do I reset the innerHTML so it doesn't display underscores
+function resetGame(){
+  status = 0;
+  count = 0;
+  correctBin = [];
+  wrongBin = [];
+  display = " ";
+}
 
 // Display a set of underscores equal to length of secretWord
-function displayUnderscores() {
-  var display = "";
-  for (i=0; i<secretWord.length; i++) display+="_";
-  return display;
+function displayUnderscores(word) {
+  var displayBlanks = secretWord.split('').map(function(){return "<div class='letterBox'></div>"}).join(' ');
+  word.innerHTML = displayBlanks;
 }
 
 //Prompt user to enter a guess letter
@@ -54,7 +69,8 @@ function validateGuess(guess, correctBin, wrongBin) {
 function displayString(display, secretWord, guess) {
   for (i=0; i<secretWord.length; i++) {
     if (secretWord.toUpperCase().charAt(i) === guess) {
-      display = display.substr(0,i) + guess + display.substr(i+1);
+      document.getElementsByClassName('letterBox')[i].innerHTML = guess;
+      // display = display.substr(0,i) + guess + display.substr(i+1);
     }
   }
   return display;
@@ -65,9 +81,17 @@ function rightGuess(guess, correctBin) {
   correctBin.push(guess);
 }
 
-//Dump incorrect guesses in wringBin
-function wrongGuess(guess, wrongBin) {
-  wrongBin.push(guess);
+//Display incorrect guesses
+function wrongGuess(wrongBin) {
+  var wrongBucket = document.getElementById('wrongGuesses');
+  var displayWrongGuesses = wrongBin.map(function(x){return "<div class='wrongLetter'>" + x + "</div>"}).join(', ');
+  wrongBucket.innerHTML = displayWrongGuesses;
+}
+
+//Display guesses remaining
+function guessesRemaining(count){
+  var guessesLeft = document.getElementById('guessesLeft');
+  guessesLeft.innerHTML = "<div class='guessCount'>" + (6 - count) + "</div>";
 }
 
 //Determine status of the the game
@@ -76,6 +100,7 @@ function gameStatus(count, display, secretWord) {
   else if (display === secretWord.toUpperCase()) return 1; // User wins
   else return 0;  //Let's keep playing
 }
+
 
 //Alert user wins
 function userWins() {
@@ -96,13 +121,14 @@ function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
   console.log("Misses: " + count);
 }
 
+
 //Run Hangman!
 function runHangman() {
   secretWord = "maintain";
   wrongBin = new Array;
   correctBin = new Array;
   count = 0;
-  display = displayUnderscores();
+  // display = displayUnderscores(word);
   status = 0;
 
   while (status == 0) {
@@ -115,8 +141,11 @@ function runHangman() {
         display = displayString(display, secretWord, guess);
       }
       else {
-        wrongGuess(guess, wrongBin);
         count+=1;
+        wrongBin.push(guess);
+
+        wrongGuess(wrongBin);
+        guessesRemaining(count);
       }
     }
 

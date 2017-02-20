@@ -54,6 +54,7 @@
       .wordChallenge-wrapper {
         display: block;
         margin: 30px auto;
+        text-align: center;
       }
       .wordChallenge {
         display: inline-block;
@@ -72,15 +73,16 @@
         margin: 0 auto;
       }
       .content-wrapper{
-        width: 250px;
-        top: 298px;
+        width: 280px;
+        top: 176px;
         left: 15px;
         position: absolute;
         -# text-align: center;
         font-family: 'Source Sans Pro', sans-serif;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 300;
         letter-spacing: 1px;
+        line-height: 1.5em;
       }
       .content-hr {
         width: 3em;
@@ -95,7 +97,7 @@
         border: 0;
       }
       .letterBox {
-        width: 58px;
+        width: 40px;
         -# border-style: solid;
         border-color: #000000;
         border-bottom: 1px solid black;
@@ -130,32 +132,42 @@
         color: #000000;
         line-height: 1.2em;
       }
-      .guessesLeft {
-
+      .wrongGuessesTitle {
+        display: inline-block;
+      }
+      .wrongLetter, .guessCount {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 18px;
+        color: #A83B70;
+        -# line-height: 1.5em;
       }
     %script(src='js/hangman.js')
     :javascript
       // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
       // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
       document.addEventListener('DOMContentLoaded', function() {
-        var btn = document.getElementById('playGame');
-        btn.addEventListener('click', runHangman);
-
+        document.getElementById('reset-game').addEventListener('click',resetGame);
+        document.getElementById('fetch-word').addEventListener('click',fetchWord);
         document.getElementById('newGame').addEventListener('click',runHangman);
+        document.getElementById('playGame').addEventListener('click', runHangman);
       });
 
   %body
-    %input{:id => 'loadWord', :type => 'button', :value => 'Load Word', :onclick => 'userAction()'}
+    %input#reset-game(type='button' value='Reset Game')
+    %input#fetch-word(type='button' value='Fetch Word')
     %input#playGame(type='button' value='Play Game')
     .main
       .content-wrapper
         .gameWinner
           Game winner: //alert Game winner
         %hr.content-hr
-        .guessesLeft
-          Guesses remaining: //count variable from JS
-        .wrongGuesses
-          Incorrect guesses: //wrongBin values separated by commas
+        .guessesLeftTitle
+          Guesses remaining:
+          #guessesLeft
+        .wrongGuessesTitle
+          Incorrect guesses:
+          #wrongGuesses
       .welcome
         Welcome to the Hangman Game!
       %img#newGame.button(src='img/Button.png')
@@ -169,21 +181,6 @@
       .wordChallenge-wrapper
         #wordChallenge
           .letterBox
-            M
-          .letterBox
-            A
-          .letterBox
-            I
-          .letterBox
-            N
-          .letterBox
-            T
-          .letterBox
-            A
-          .letterBox
-            I
-          .letterBox
-            N
         .alphabet-wrapper
           .alphabet
             A
