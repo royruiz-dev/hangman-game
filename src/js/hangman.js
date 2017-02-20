@@ -5,25 +5,50 @@
 // Assign count = 1 to return only 1 word
 // save word to secretWord string
 
-var wordCount, difficulty, minLength, maxLength, start;
+var wordBank = "";
+var secretWord;
+var start, filter;
+
+var difficulty = 7;
+var minLength = 4;
+var maxLength = 8;
+
+filter = filterWords(difficulty, minLength, maxLength);
+
+function filterWords(difficulty, minLength, maxLength) {
+  return "&difficulty=" + difficulty + "&minLength=" + minLength + "&maxLength=" + maxLength;
+}
 
 function reqListener () {
-  wordCount = this.responseText; //.split('\n').length
-  console.log(wordCount);
+  wordBank = this.responseText;
+  console.log(wordBank);
 }
 
 function fetchWord() {
   //http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
-  var start;  //Save record to array for total count?
-
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/words?difficulty=8&start=5278" + "&count=1", true);
+  xhttp.open("GET", "/words?" + filter, true);
+  xhttp.onload = function(e) {
+    if (xhttp.readyState === 4) {
+      if (xhttp.status === 200) {
+        console.log(this.responseText);
+      } else {
+        console.error(this.statusText);
+    }
+  }
+  };
+  xhttp.onerror = function(e) {
+    console.error(this.statusText);
+  };
   xhttp.addEventListener("load", reqListener);
   xhttp.send(null);
 }
 
+function randomizeWord() {
+  var index = Math.floor(Math.random()*wordBank.split('\n').length);
+  return wordBank.split('\n')[index];
+}
 
-var secretWord = "maintain";
 var guess, valid;
 var wrongBin, correctBin = new Array;
 var count, status, guessesAllowed;
@@ -48,8 +73,9 @@ function enterGuess() {
   return prompt("Enter a letter!").toUpperCase();
 }
 
-function validateGuess(guess, correctBin, wrongBin) {
+function validateGuess(guess, correctBin, wrongBin, secretWord) {
   if (!guess.match(regex)) return false; // Alert the format of the letter is wrong and User must enter letter from alphabet
+  else if (!/[a-zA-Z]/.test(secretWord)) return false;
   else if (correctBin.indexOf(guess) > -1 || wrongBin.indexOf(guess) > -1) return false; // Alert the letter has already been used and tell User to enter another one
   else return true;
 }
@@ -130,6 +156,7 @@ function resetGame() {
 
 function initializeNewGame() {
   resetGame();
+  secretWord = randomizeWord();
   display = displayInitialize();
   displayUnderscores();
 }
@@ -138,7 +165,7 @@ function doGuess() {
   if (status !=0 ) return;  //inversion of while loop
 
   guess = this.innerText;
-  valid = validateGuess(guess, correctBin, wrongBin);
+  valid = validateGuess(guess, correctBin, wrongBin, secretWord);
 
   if (valid) {
     if (secretWord.toUpperCase().indexOf(guess) > -1) {
@@ -152,9 +179,9 @@ function doGuess() {
       wrongGuess(wrongBin);
       guessesRemaining(count);
     }
+  status = gameStatus(count, display, secretWord);
   }
 
-  status = gameStatus(count, display, secretWord);
   consoleOutput(display, secretWord, wrongBin, correctBin, count);
 
   if (status == 1) userWins();

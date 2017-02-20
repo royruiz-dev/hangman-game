@@ -12,12 +12,18 @@
 
   ✔ Run Hangman from ‘click’ handlers on alphabet letters
 
-  Create a button to get number of words
-  Change design until the game doesn't start until determining word count
-  Add eventuality in which the REST call fails
-  On DOMContentLoaded, run above code to initialize number of words
+  ✔ Create a button to get number of words
+  ✔ Change design until the game doesn't start until determining word count
+  ✔ Add eventuality in which the REST call fails
+  --RR: I think I did this correctly.
+  ✔ On DOMContentLoaded, run above code to initialize number of words
+  --RR: It seems to work fine for me.
+  ✔ Create a button to fetch a random word (Assign random word to secretWord)
+  --RR: Instead of creating a button, new game cannot be initialized until fetch word has executed a wordBank in which them new game execute randomizeWord()
+  ✔ Limit the length of the word to something reasonable (maxLength)
 
-  Create a button to fetch a random word (Assign random word to secretWord)
-  Limit the length of the word to something reasonable (maxLength)
+  ✔ Link reset game, word fetching to new game
+  ✔ Fix CSS for letterBox class
 
-  Link reset game, word fetching to new game
+  Implement HTML + CSS for hangman
+  Add function displayHangman() to show and hide the right parts of hangman
