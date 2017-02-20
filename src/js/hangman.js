@@ -94,7 +94,8 @@ function gameStatus(count, display, secretWord) {
 
 //Alert user wins
 function userWins() {
-  alert("User Wins!");
+  var winner = document.getElementById('gameWinner');
+  winner.innerHTML = "Guesser Wins!";
 }
 
 //Alert computer wins
@@ -121,7 +122,8 @@ function resetGame() {
   guessesAllowed = 6;
 
   guessesRemaining(count);
-
+  document.getElementById('gameWinner').innerHTML = "";
+  document.getElementById('wrongGuesses').innerHTML = "";
   document.getElementById('wordChallenge').innerHTML = "";
 }
 

@@ -6,7 +6,7 @@
   - RR: Cannot delete rightGuess because even though I'm not using it to show in HTML, rightGuess function is pushing the letters into correctBin array, which I use in the validateGuesses function
   ✔ Modify wrongGuess
   ✔ Modify guessesRemaining
-  Modify userWins
+  ✔ Modify userWins
   Modify userLoses
   Modify resetGame
 
