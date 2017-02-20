@@ -28,15 +28,15 @@ function fetchWord() {
   //http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/words?" + filter, true);
-  xhttp.onload = function(e) {
-    if (xhttp.readyState === 4) {
-      if (xhttp.status === 200) {
-        console.log(this.responseText);
-      } else {
-        console.error(this.statusText);
-    }
-  }
-  };
+  xhttp.addEventListener('load', function(e) {
+     if (xhttp.readyState === 4) {
+       if (xhttp.status === 200) {
+         console.log(this.responseText);
+       } else {
+         console.error(this.statusText);
+     }
+   }
+   });
   xhttp.onerror = function(e) {
     console.error(this.statusText);
   };

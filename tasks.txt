@@ -25,5 +25,5 @@
   ✔ Link reset game, word fetching to new game
   ✔ Fix CSS for letterBox class
 
-  Implement HTML + CSS for hangman
+  ✔ Implement HTML + CSS for hangman
   Add function displayHangman() to show and hide the right parts of hangman

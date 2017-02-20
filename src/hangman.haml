@@ -21,8 +21,6 @@
       .main {
         width: 500px;
         margin: 0 auto;
-        -# text-align: center;
-        -# display: block;
       }
       .welcome {
         font-family: 'Ceviche One', cursive;
@@ -45,62 +43,46 @@
         margin: 15px auto 0 auto;
         display: block;
       }
+      .hangmanDude {
+        height: 304px;
+        position: absolute;
+      }
       .hangmanHead {
         position: absolute;
-        margin: 58px auto 0 43px;
-        -# display: block;
-      }
-      .hangmanDude {
-        -# display: block;
-        -# left: 500px;
-        height: 304px;
+        margin: 58px auto 0 179px;
+        display: none;
       }
       .hangmanBody {
         position: absolute;
-        margin: 110px auto 0 43px;
-        -# display: block;
+        margin: 110px auto 0 179px;
+        display: none;
       }
       .hangmanLeftArm {
         position: absolute;
-        margin: 110px auto 0 104px;
-        -# display: block;
+        margin: 110px auto 0 240px;
+        display: none;
       }
       .hangmanRightArm {
         position: absolute;
-        margin: 110px auto 0 6px;
-        -# display: block;
+        margin: 110px auto 0 142px;
+        display: none;
       }
       .hangmanLeftLeg {
         position: absolute;
-        margin: 190px auto 0 73px;
-        -# display: block;
+        margin: 190px auto 0 209px;
+        display: none;
       }
       .hangmanRightLeg {
         position: absolute;
-        margin: 190px auto 0 43px;
-        -# display: block;
-      }
-      .scaffoldSide {
-        -# margin-left: 50px;
-        -# margin: auto 3px 0 auto;
-        -# display: block;
-        -# margin: 0 auto;
-        -# text-align: right;
-        -# margin-top: 10px;
+        margin: 190px auto 0 179px;
+        display: none;
       }
       .hangmanScaffold {
-        width: 225px;
         height: 304px;
-        display: block;
-        margin: 0 auto;
+        margin-left: 306px;
       }
-      -# .left-of-scaffoldSide {
-      -#   -# width: 171px;
-      -#   position: absolute;
-      -# }
       .scaffoldTop-and-Rope {
         margin-left: 194px;
-        -# top: 0px;
         margin-bottom: 189px;
       }
       .hangmanBottom {
@@ -184,7 +166,6 @@
         font-weight: 700;
         font-size: 18px;
         color: #A83B70;
-        -# line-height: 1.5em;
       }
       #gameWinner {
         margin-top: 30px;
@@ -196,15 +177,15 @@
     :javascript
       // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
       // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
       document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('fetchWord').addEventListener('click',fetchWord);
         document.getElementById('newGame').addEventListener('click',initializeNewGame);
         var letters = document.getElementsByClassName('alphabet');
         Array.prototype.map.call(letters,function(x) {
           x.addEventListener('click', doGuess);
         });
+        fetchWord();
       });
-
   %body
     .main
       .content-wrapper
@@ -217,12 +198,8 @@
         Welcome to the Hangman Game!
       .button-wrapper
         %img#newGame.button(src='img/newgame-button.png')
-        %img#fetchWord.button(src='img/fetchword-button.png')
       .hangmanBuild
-        -# .hangmanScaffold
-          -# .left-of-scaffoldSide
         .hangmanDude
-          .scaffoldSide
           %img.hangmanHead(src='img/head.png')
           %img.hangmanBody(src='img/body.png')
           %img.hangmanLeftArm(src='img/left-arm.png')
@@ -230,6 +207,7 @@
           %img.hangmanLeftLeg(src='img/left-leg.png')
           %img.hangmanRightLeg(src='img/right-leg.png')
           %img.scaffoldTop-and-Rope(src='img/Scaffold-top-rope.png')
+        .hangmanScaffold
           %img(src='img/Scaffold-side.png')
         .hangmanBottom
           %img.base(src='img/Base-and-shadow.png')
