@@ -98,6 +98,13 @@ function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
 
 //Run Hangman!
 function runHangman() {
+  secretWord = "maintain";
+  wrongBin = new Array;
+  correctBin = new Array;
+  count = 0;
+  display = displayUnderscores();
+  status = 0;
+
   while (status == 0) {
     guess = enterGuess();
     valid = validateGuess(guess, correctBin, wrongBin);
