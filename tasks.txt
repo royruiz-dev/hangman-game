@@ -10,7 +10,7 @@
   ✔ Modify userLoses
   ✔ Modify resetGame
 
-  Run Hangman from ‘click’ handlers on alphabet letters
+  ✔ Run Hangman from ‘click’ handlers on alphabet letters
 
   Create a button to get number of words
   Change design until the game doesn't start until determining word count

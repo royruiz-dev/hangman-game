@@ -147,16 +147,16 @@
       // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
       // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
       document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('reset-game').addEventListener('click',resetGame);
         document.getElementById('fetch-word').addEventListener('click',fetchWord);
-        document.getElementById('newGame').addEventListener('click',runHangman);
-        document.getElementById('playGame').addEventListener('click', runHangman);
+        document.getElementById('newGame').addEventListener('click',initializeNewGame);
+        var letters = document.getElementsByClassName('alphabet');
+        Array.prototype.map.call(letters,function(x) {
+          x.addEventListener('click', doGuess);
+        });
       });
 
   %body
-    %input#reset-game(type='button' value='Reset Game')
     %input#fetch-word(type='button' value='Fetch Word')
-    %input#playGame(type='button' value='Play Game')
     .main
       .content-wrapper
         #gameWinner

@@ -128,41 +128,35 @@ function resetGame() {
   document.getElementById('wordChallenge').innerHTML = "";
 }
 
-//Run Hangman!
-function runHangman() {
+function initializeNewGame() {
   resetGame();
-
-  // secretWord = "maintain";
-  // wrongBin = new Array;
-  // correctBin = new Array;
-  // count = 0;
-  // status = 0;
   display = displayInitialize();
   displayUnderscores();
+}
 
-  while (status == 0) {
-    guess = enterGuess();
-    valid = validateGuess(guess, correctBin, wrongBin);
+function doGuess() {
+  if (status !=0 ) return;  //inversion of while loop
 
-    if (valid) {
-      if (secretWord.toUpperCase().indexOf(guess) > -1) {
-        rightGuess(guess, correctBin);
-        display = displayString(secretWord, guess);
-      }
-      else {
-        count+=1;
-        wrongBin.push(guess);
+  guess = this.innerText;
+  valid = validateGuess(guess, correctBin, wrongBin);
 
-        wrongGuess(wrongBin);
-        guessesRemaining(count);
-      }
+  if (valid) {
+    if (secretWord.toUpperCase().indexOf(guess) > -1) {
+      rightGuess(guess, correctBin);
+      display = displayString(secretWord, guess);
     }
+    else {
+      count+=1;
+      wrongBin.push(guess);
 
-    status = gameStatus(count, display, secretWord);
-    consoleOutput(display, secretWord, wrongBin, correctBin, count);
+      wrongGuess(wrongBin);
+      guessesRemaining(count);
+    }
   }
 
-  // At this point, either computer or user wins
+  status = gameStatus(count, display, secretWord);
+  consoleOutput(display, secretWord, wrongBin, correctBin, count);
+
   if (status == 1) userWins();
-  else userLoses();
+  else if (status == -1) userLoses();
 }
