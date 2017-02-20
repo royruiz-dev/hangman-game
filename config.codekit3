@@ -35,9 +35,9 @@
 		},
 	"\/config\/stop.bash": {
 		"ft": 8192,
-		"oA": 1,
+		"oA": 2,
 		"oAP": "\/build\/config\/stop.bash",
-		"oF": 1
+		"oF": 0
 		},
 	"\/logs": {
 		"ft": 65536,
@@ -269,6 +269,12 @@
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
+		},
+	"\/tasks.txt": {
+		"ft": 8192,
+		"oA": 1,
+		"oAP": "\/build\/tasks.txt",
+		"oF": 1
 		}
 	},
 "hooks": [

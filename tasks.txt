@@ -1,0 +1,16 @@
+  Create function resetGame
+
+  Change displayUnderscores function based on what we did
+  Change displayString function to output letters in HTML, not console
+  Delete rightGuess
+  Modify wrongGuess
+  Modify userWins
+  Modify userLoses
+  Modify resetGame
+
+  Run Hangman from ‘click’ handlers on alphabet letters
+
+  Create a button to fetch a random word (Assign random word to secretWord)
+  Limit the length of the word to something reasonable (maxLength)
+
+  Link reset game, word fetching to new game
