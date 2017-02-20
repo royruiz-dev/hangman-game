@@ -139,14 +139,6 @@ function userLoses() {
   winner.innerHTML = "Secret Keeper Wins!";
 }
 
-//Write to the console log for debugging purposes
-function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
-  console.log("Display is: "+ display);
-  console.log("Secret word is: " + secretWord);
-  console.log("Wrong Guesses: " + wrongBin);
-  console.log("Correct Guesses: " + correctBin);
-  console.log("Misses: " + count);
-}
 
 //Initializes all variables necessary to reset game
 function resetGame() {
@@ -203,4 +195,13 @@ function doGuess() {
 
   if (status == 1) userWins();
   else if (status == -1) userLoses();
+}
+
+//This is strictly for debugging purposes only and is not to be included as part of the game code
+function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
+  console.log("Display is: "+ display);
+  console.log("Secret word is: " + secretWord);
+  console.log("Wrong Guesses: " + wrongBin);
+  console.log("Correct Guesses: " + correctBin);
+  console.log("Misses: " + count);
 }
