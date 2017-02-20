@@ -92,7 +92,7 @@
 		},
 	"\/src\/img\/Button.png": {
 		"ft": 32768,
-		"iS": 1092,
+		"iS": 3240,
 		"oA": 0,
 		"oAP": "\/build\/img\/Button.png",
 		"oF": 0,
@@ -100,7 +100,7 @@
 		},
 	"\/src\/img\/Button@2x.png": {
 		"ft": 32768,
-		"iS": 2760,
+		"iS": 6748,
 		"oA": 0,
 		"oAP": "\/build\/img\/Button@2x.png",
 		"oF": 0,
@@ -258,6 +258,15 @@
 		"oA": 0,
 		"oAP": "\/build\/js\/hangman.js",
 		"oF": 3,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/src\/js\/notes.js": {
+		"ft": 64,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "\/build\/js\/notes-min.js",
+		"oF": 0,
 		"sC": 0,
 		"tS": 0
 		},

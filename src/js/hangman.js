@@ -23,33 +23,27 @@ function fetchWord() {
 }
 
 //Variables for event handlers
-document.addEventListener('DOMContentLoaded', function() {
-  var word = document.getElementById('wordChallenge');
-  word.addEventListener('click',displayUnderscores(word));
-});
+// document.addEventListener('DOMContentLoaded', function() {
+
+// });
 
 
 var secretWord = "maintain";
 var guess, valid;
 var wrongBin, correctBin = new Array;
-var count = 0;
+var count, status;
 var regex = /^[a-zA-Z]$/;
-var status = 0;
 var display = "";
 
-
-//Initializes all variables necessary to reset game
-//How do I reset the innerHTML so it doesn't display underscores
-function resetGame(){
-  status = 0;
-  count = 0;
-  correctBin = [];
-  wrongBin = [];
-  display = " ";
+function displayInitialize() {
+  var display = "";
+  for (i=0; i<secretWord.length; i++) display+="_";
+  return display;
 }
 
 // Display a set of underscores equal to length of secretWord
-function displayUnderscores(word) {
+function displayUnderscores() {
+  var word = document.getElementById('wordChallenge');
   var displayBlanks = secretWord.split('').map(function(){return "<div class='letterBox'></div>"}).join(' ');
   word.innerHTML = displayBlanks;
 }
@@ -66,11 +60,11 @@ function validateGuess(guess, correctBin, wrongBin) {
 }
 
 //display word with correct guesses
-function displayString(display, secretWord, guess) {
+function displayString(secretWord, guess) {
   for (i=0; i<secretWord.length; i++) {
     if (secretWord.toUpperCase().charAt(i) === guess) {
       document.getElementsByClassName('letterBox')[i].innerHTML = guess;
-      // display = display.substr(0,i) + guess + display.substr(i+1);
+      display = display.substr(0,i) + guess + display.substr(i+1);
     }
   }
   return display;
@@ -121,15 +115,28 @@ function consoleOutput(display, secretWord, wrongBin, correctBin, count) {
   console.log("Misses: " + count);
 }
 
+//Initializes all variables necessary to reset game
+function resetGame(){
+  status = 0;
+  count = 0;
+  correctBin = [];
+  wrongBin = [];
+  display = "";
+
+  document.getElementById('wordChallenge').innerHTML = "";
+}
 
 //Run Hangman!
 function runHangman() {
-  secretWord = "maintain";
-  wrongBin = new Array;
-  correctBin = new Array;
-  count = 0;
-  // display = displayUnderscores(word);
-  status = 0;
+  resetGame();
+
+  // secretWord = "maintain";
+  // wrongBin = new Array;
+  // correctBin = new Array;
+  // count = 0;
+  // status = 0;
+  display = displayInitialize();
+  displayUnderscores();
 
   while (status == 0) {
     guess = enterGuess();
@@ -138,7 +145,7 @@ function runHangman() {
     if (valid) {
       if (secretWord.toUpperCase().indexOf(guess) > -1) {
         rightGuess(guess, correctBin);
-        display = displayString(display, secretWord, guess);
+        display = displayString(secretWord, guess);
       }
       else {
         count+=1;
