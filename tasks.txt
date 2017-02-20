@@ -26,4 +26,4 @@
   ✔ Fix CSS for letterBox class
 
   ✔ Implement HTML + CSS for hangman
-  Add function displayHangman() to show and hide the right parts of hangman
+  ✔ Add function displayHangman() to show and hide the right parts of hangman
