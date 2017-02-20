@@ -10,6 +10,11 @@
 
   Run Hangman from ‘click’ handlers on alphabet letters
 
+  Create a button to get number of words
+  Change design until the game doesn't start until determining word count
+  Add eventuality in which the REST call fails
+  On DOMContentLoaded, run above code to initialize number of words
+
   Create a button to fetch a random word (Assign random word to secretWord)
   Limit the length of the word to something reasonable (maxLength)
 
