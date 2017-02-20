@@ -23,28 +23,25 @@ function filterWords(difficulty, minLength, maxLength) {
 }
 
 
-function reqListener () {
-  wordBank = this.responseText;
-  console.log(wordBank);  //Shows a bank of words
+function reqListener() {
+  if (this.readyState === 4) {
+    if (this.status === 200) wordBank = this.responseText;
+    else blockScreen();
+  }
+}
+
+function blockScreen() {
+  var item = document.getElementById('errorOverlay');
+  item.style.display = "block";
 }
 
 function fetchWord() {
   //http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "/words?" + filter, true);
-  // xhttp.addEventListener('load', function(e) {
-  //    if (xhttp.readyState === 4) {
-  //      if (xhttp.status === 200) {
-  //        // console.log(this.responseText);
-  //      } else {
-  //        // console.error(this.statusText);
-  //    }
-  //  }
-  //  });
-  // xhttp.onerror = function(e) {
-  //   console.error(this.statusText);
-  // };
   xhttp.addEventListener("load", reqListener);
+  xhttp.addEventListener("error", blockScreen);
+  xhttp.addEventListener("abort", blockScreen);
   xhttp.send(null);
 }
 

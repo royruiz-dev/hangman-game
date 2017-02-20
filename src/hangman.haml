@@ -173,11 +173,28 @@
         font-size: 16px;
         color: #A83B70;
       }
+      #errorOverlay {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        display: none;
+      }
+      .errorText {
+        margin: 270px auto;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+        font-size: 72px;
+        font-weight: 300;
+        color: #000000;
+      }
+      .errorText a{
+        text-decoration: none;
+      }
     %script(src='js/hangman.js')
     :javascript
       // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
       // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-
       document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('newGame').addEventListener('click',initializeNewGame);
         var letters = document.getElementsByClassName('alphabet');
@@ -187,6 +204,11 @@
         fetchWord();
       });
   %body
+    #errorOverlay
+      .errorText
+        Please contact the administrator at
+        %a(href='mailto:me@royruiz.com')
+          me@royruiz.com
     .main
       .content-wrapper
         .guessesLeftTitle
