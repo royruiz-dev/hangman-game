@@ -33,10 +33,25 @@ body
   text-align: center
   margin: 0 auto
 
+//CSS below builds the Hangman elements
 .hangmanBuild
   margin: 15px auto 0 auto
   display: block
 
+.hangmanScaffold
+  height: 304px
+  margin-left: 306px
+
+.scaffoldTop-and-Rope
+  margin-left: 194px
+  margin-bottom: 189px
+
+.hangmanBottom
+  display: block
+  margin: 0 auto
+
+
+//CSS below builds each of the six parts of Hangman. Displayed as none to control the display within JavaScript through event handlers
 .hangmanDude
   height: 304px
   position: absolute
@@ -71,18 +86,8 @@ body
   margin: 190px auto 0 179px
   display: none
 
-.hangmanScaffold
-  height: 304px
-  margin-left: 306px
 
-.scaffoldTop-and-Rope
-  margin-left: 194px
-  margin-bottom: 189px
-
-.hangmanBottom
-  display: block
-  margin: 0 auto
-
+//CSS to call out the attributes for the center panel below Hangman elements
 .wordChallenge-wrapper
   display: block
   margin: 0 auto
@@ -141,6 +146,8 @@ body
   display: inline
   margin: 10px auto 0 auto
 
+
+//CSS for the alphabet letters located underneath the secret word
 .alphabet
   width: 25px
   display: inline-block
@@ -153,6 +160,8 @@ body
   line-height: 1.2em
   cursor: pointer
 
+
+//CSS for the left panel that will populate as the user goes through the game
 .wrongGuessesTitle
   display: inline-block
 
@@ -167,6 +176,7 @@ body
   font-weight: 700
   font-size: 16px
   color: #A83B70
+
 
 //CSS below handles the attributes for blockScreen()
 #errorOverlay
