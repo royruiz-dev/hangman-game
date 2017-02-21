@@ -1,19 +1,12 @@
 !!!
 %html
   %head
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(name="apple-mobile-web-app-capable" content="yes")
     %link(rel='stylesheet' href='style.css')
-    %script(src='js/hangman.js')
-    :javascript
-      // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
-      // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-      document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('newGame').addEventListener('click',initializeNewGame);
-        var letters = document.getElementsByClassName('alphabet');
-        Array.prototype.map.call(letters,function(x) {
-          x.addEventListener('click', doGuess);
-        });
-        fetchWord();
-      });
+    %script(src='js/config.js')
+    %script(src='js/app.js')
+    %script(src='js/init.js')
   %body
     #errorOverlay
       .errorText
@@ -21,17 +14,25 @@
         %a(href='mailto:me@royruiz.com')
           me@royruiz.com
     .main
+
+      //Contains all elements in the left window panel. It populates as the user plays the game
       .content-wrapper
         .guessesLeftTitle
           #guessesLeft
         #wrongGuessesTitle
           #wrongGuesses
         #gameWinner
+
+      //Start of Content centered in the page
       .welcome
         Welcome to the Hangman Game!
       .button-wrapper
         %img#newGame.button(src='img/newgame-button.png')
+
+      //All elements pertaining to the Hangman image in center of page
       .hangmanBuild
+
+        //This controls the elements involving the Hangman silhouette. The image tags are initialized to not display. They display as the user guesses incorrectly
         .hangmanDude
           %img.hangmanHead(src='img/head.png')
           %img.hangmanBody(src='img/body.png')
@@ -44,6 +45,8 @@
           %img(src='img/Scaffold-side.png')
         .hangmanBottom
           %img.base(src='img/Base-and-shadow.png')
+
+      //Contains all elements in the bottom center of page. It populates as the user plays the game. It also uses the text in 'alphabet' as the guesses when performing 'click' event
       .wordChallenge-wrapper
         #wordChallenge
         .alphabet-wrapper
@@ -99,6 +102,8 @@
             Y
           .alphabet
             Z
+
+          //Footer to ad a visual for user to know what to do above
           .clickLetter
             Click a letter
 

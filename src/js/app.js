@@ -5,15 +5,6 @@
 // Assign count = 1 to return only 1 word
 // save word to secretWord string
 
-var wordBank = "";
-var secretWord;
-var start, filter;
-
-//Set certain REST API parameters
-var difficulty = 7;
-var minLength = 4;
-var maxLength = 8;
-
 
 filter = filterWords(difficulty, minLength, maxLength);
 
@@ -39,9 +30,9 @@ function blockScreen() {
 }
 
 function fetchWord() {
-  //http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words
+
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "/words?" + filter, true);
+  xhttp.open("GET", url + filter, true);
   xhttp.addEventListener("load", reqListener);
   xhttp.addEventListener("error", blockScreen);
   xhttp.addEventListener("abort", blockScreen);
@@ -53,14 +44,6 @@ function randomizeWord() {
   var index = Math.floor(Math.random()*wordBank.split('\n').length);
   return wordBank.split('\n')[index];
 }
-
-
-var guess, valid;
-var wrongBin, correctBin = new Array;
-var count, status, guessesAllowed;
-var regex = /^[a-zA-Z]$/;
-var display = "";
-
 
 //Display a set of underscores to use for later comparison
 function displayInitialize() {
@@ -114,7 +97,7 @@ function guessesRemaining(count){
 
 //Perform guess and secret word validation
 function validateGuess(guess, correctBin, wrongBin, secretWord) {
-  if (!guess.match(regex)) return false; // Alert the format of the letter is wrong and User must enter letter from alphabet
+  if (!guess.match(/^[a-zA-Z]$/)) return false; // Alert the format of the letter is wrong and User must enter letter from alphabet
   else if (!/[a-zA-Z]/.test(secretWord)) return false;
   else if (correctBin.indexOf(guess) > -1 || wrongBin.indexOf(guess) > -1) return false; // Alert the letter has already been used and tell User to enter another one
   else return true;

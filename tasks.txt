@@ -29,16 +29,16 @@
   ✔ Add function displayHangman() to show and hide the right parts of hangman
 
   ✔ move css into sass
-  move globals into config.js
-  move DOMConfigLoaded into init.js
+  ✔ move globals into config.js
+  ✔ move DOMConfigLoaded into init.js
   comment every function in js
-  comment sass
-  comment haml
+  ✔ comment sass
+  ✔ comment haml
   minify css in codekit
   join and uglify js in codekit
   make html output squished in codekit
   ✔ rename hangman.haml to index.haml
-  remove all unnecessary files
+  ✔ remove all unnecessary files
   write readme
   - overview
   - features
