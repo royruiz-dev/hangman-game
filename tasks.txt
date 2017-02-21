@@ -27,3 +27,64 @@
 
   ✔ Implement HTML + CSS for hangman
   ✔ Add function displayHangman() to show and hide the right parts of hangman
+
+  ✔ move css into sass
+  move globals into config.js
+  move DOMConfigLoaded into init.js
+  comment every function in js
+  comment sass
+  comment haml
+  minify css in codekit
+  join and uglify js in codekit
+  make html output squished in codekit
+  ✔ rename hangman.haml to index.haml
+  remove all unnecessary files
+  write readme
+  - overview
+  - features
+   - English only
+   - default difficulty
+   - default word lengths
+   - when to expect errors
+   - playable on:
+     - desktop browsers, versions & screen resolutions
+     - ios browsers, versions & screen resolutions
+     - android browsers, versions & screen resolutions
+   - what's configurable
+     - number of tries max 6, but couod be fewer for maximum excitement
+     - difficulty
+     - min/max word lengths
+  - build
+   - prerequisites
+   - step-by-step instructions
+   - where to enter/change url for the proxy to word API
+   - where to put administrator address
+  - deploy
+   - prerequisites
+   - how to configure proxy for words API for nginx
+   - copy build to server
+  - develop (how to)
+   - prerequisites
+   - directory structure
+     - catalog every file
+   - code conventions
+     - spaces, not tabs
+     - indent is 2 spaces wide
+     - prefer function abc() {...} to abc = function () {...}
+     - no function longer than 15 lines of code with unless there is a good reason
+     - prefer to declare event handlers as named functions at the top level
+       rather than write them out inline unless they are very short.
+     - prefer to use collection functions instead of for or while loops
+     - generally prefer simplicity and readability over an opinionated
+       "the right way of doing things"
+     - prefer to flatten unnecessary nesting in code and data structures
+   - codekit how to set up
+   - nginx (starting, stopping)
+   - text editor (sublime, plugins etc)
+   - catalog of global variables, their current values and allowed ranges
+  - how to troubleshoot errors
+   - which global variables should be checked first
+   - the most common errors:
+     - codekit is not running: what do you see and what should you do?
+     - nginx is not running: -"-
+     - nginx is not proxying: -"-

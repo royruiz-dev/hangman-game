@@ -1,0 +1,104 @@
+!!!
+%html
+  %head
+    %link(rel='stylesheet' href='style.css')
+    %script(src='js/hangman.js')
+    :javascript
+      // https://developer.mozilla.org/en/docs/Web/Events/DOMContentLoaded
+      // https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+      document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('newGame').addEventListener('click',initializeNewGame);
+        var letters = document.getElementsByClassName('alphabet');
+        Array.prototype.map.call(letters,function(x) {
+          x.addEventListener('click', doGuess);
+        });
+        fetchWord();
+      });
+  %body
+    #errorOverlay
+      .errorText
+        Please contact the administrator at
+        %a(href='mailto:me@royruiz.com')
+          me@royruiz.com
+    .main
+      .content-wrapper
+        .guessesLeftTitle
+          #guessesLeft
+        #wrongGuessesTitle
+          #wrongGuesses
+        #gameWinner
+      .welcome
+        Welcome to the Hangman Game!
+      .button-wrapper
+        %img#newGame.button(src='img/newgame-button.png')
+      .hangmanBuild
+        .hangmanDude
+          %img.hangmanHead(src='img/head.png')
+          %img.hangmanBody(src='img/body.png')
+          %img.hangmanLeftArm(src='img/left-arm.png')
+          %img.hangmanRightArm(src='img/right-arm.png')
+          %img.hangmanLeftLeg(src='img/left-leg.png')
+          %img.hangmanRightLeg(src='img/right-leg.png')
+          %img.scaffoldTop-and-Rope(src='img/Scaffold-top-rope.png')
+        .hangmanScaffold
+          %img(src='img/Scaffold-side.png')
+        .hangmanBottom
+          %img.base(src='img/Base-and-shadow.png')
+      .wordChallenge-wrapper
+        #wordChallenge
+        .alphabet-wrapper
+          .alphabet
+            A
+          .alphabet
+            B
+          .alphabet
+            C
+          .alphabet
+            D
+          .alphabet
+            E
+          .alphabet
+            F
+          .alphabet
+            G
+          .alphabet
+            H
+          .alphabet
+            I
+          .alphabet
+            J
+          .alphabet
+            K
+          .alphabet
+            L
+          .alphabet
+            M
+          .alphabet
+            N
+          .alphabet
+            O
+          .alphabet
+            P
+          .alphabet
+            Q
+          .alphabet
+            R
+          .alphabet
+            S
+          .alphabet
+            T
+          .alphabet
+            U
+          .alphabet
+            V
+          .alphabet
+            W
+          .alphabet
+            X
+          .alphabet
+            Y
+          .alphabet
+            Z
+          .clickLetter
+            Click a letter
+
