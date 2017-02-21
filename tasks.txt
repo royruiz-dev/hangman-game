@@ -31,12 +31,15 @@
   ✔ move css into sass
   ✔ move globals into config.js
   ✔ move DOMConfigLoaded into init.js
-  comment every function in js
+  ✔ comment every function in js
   ✔ comment sass
   ✔ comment haml
-  minify css in codekit
-  join and uglify js in codekit
-  make html output squished in codekit
+  ✘ minify css in codekit
+    --RR: Not doing due to limited time. However, will learn to figure out on my own.
+  ✘ join and uglify js in codekit
+    --RR: Not doing due to limited time. However, will learn to figure out on my own.
+  ✘ make html output squished in codekit
+    --RR: Not doing due to limited time. However, will learn to figure out on my own.
   ✔ rename hangman.haml to index.haml
   ✔ remove all unnecessary files
   write readme
