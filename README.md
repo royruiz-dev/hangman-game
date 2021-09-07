@@ -30,16 +30,16 @@ location = /words {
 * Location does not have to be at the root level on the web server. See sample configuration for nginx in config/proxy.conf.
 
 2. Customize src/js/config.js
-   a. Modify variable `url` as necessary to refer to the location of the proxy to the word API.
-   b. Set the desired level of difficulty (default 8)
-   c. Set min and max word length (default 4 and 8, respectively)
+  a. Modify variable `url` as necessary to refer to the location of the proxy to the word API.
+  b. Set the desired level of difficulty (default 8)
+  c. Set min and max word length (default 4 and 8, respectively)
 <br>
 3. Change the email of the administrative contact in index.haml.
 <br>
 4. Build the project files using CodeKit, https://codekitapp.com.
-   a. Drop the project folder on CodeKit window.
-   b. Click refresh button.
-   c. Click Build Project button.
+  a. Drop the project folder on CodeKit window.
+  b. Click refresh button.
+  c. Click Build Project button.
 <br>
 5. Copy contents of `build/js/`, `build/img/` folders, and files `build/index.html` and `build/style.css` to the web server.
 <br>
