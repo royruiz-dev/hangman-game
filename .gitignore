@@ -2,3 +2,4 @@ logs
 linkedin-reach.sublime-project
 linkedin-reach.sublime-workspace
 build
+venv/
