@@ -33,7 +33,7 @@ haml render src/index.haml > build/index.html
 
 # Compile SASS to Flask's static folder
 echo "Compiling SASS..."
-sass src/style.sass build/style.css
+sass src/style.sass build/css/style.css
 
 # Copy static assets (images and JS files) to build/
 cp -r public/img build/
