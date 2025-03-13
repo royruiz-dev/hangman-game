@@ -6,12 +6,12 @@
 // save word to secretWord string
 
 
-filter = filterWords(difficulty, minLength, maxLength);
+// filter = filterWords(difficulty, minLength, maxLength);
 
-//Return a string for the url in GET method
-function filterWords(difficulty, minLength, maxLength) {
-  return "&difficulty=" + difficulty + "&minLength=" + minLength + "&maxLength=" + maxLength;
-}
+// //Return a string for the url in GET method
+// function filterWords(difficulty, minLength, maxLength) {
+//   return "&difficulty=" + difficulty + "&minLength=" + minLength + "&maxLength=" + maxLength;
+// }
 
 //This function allows the XMLHttpRequest object to obtain the response from the server once it reaches a good readyState and status is clear to fetch. This is a robust way to perform request. After the response(long string value) is obtained by the object, it is saved in wordBank string and the game initializes by calling initializeGame()
 
@@ -19,7 +19,7 @@ function filterWords(difficulty, minLength, maxLength) {
 function reqListener() {
   if (this.readyState === 4) {
     if (this.status === 200) {
-      wordBank = this.responseText;
+      wordBank = JSON.parse(this.responseText);
       initializeNewGame();
     }
     else blockScreen();
@@ -38,17 +38,18 @@ function blockScreen() {
 function fetchWord() {
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", url + filter, true);
+  // xhttp.open("GET", url + filter, true);
+  xhttp.open("GET", url , true);
   xhttp.addEventListener("load", reqListener);
   xhttp.addEventListener("error", blockScreen);
   xhttp.addEventListener("abort", blockScreen);
   xhttp.send(null);
 }
 
-//This function determines the word count of wordBank string by calling 'split' method and 'length' property. It uses the count to provide a random number. A number is used to pull one array element, which becomes our secret word for the current game
+//This function determines the word count of wordBank array by calling 'length' property. It uses the count to provide a random number. A number is used to pull one array element, which becomes our secret word for the current game
 function randomizeWord() {
-  var index = Math.floor(Math.random()*wordBank.split('\n').length);
-  return wordBank.split('\n')[index];
+  var index = Math.floor(Math.random() * wordBank.length);
+  return wordBank[index];
 }
 
 //This function initializes a set of underscores according to the length of secretWord. This is then used as a comparison to the secretWord string and verify whether game is completed or not. The value of display can also be found in the console for debugging purposes.
