@@ -55,6 +55,7 @@ function randomizeWord() {
 //This function initializes a set of underscores according to the length of secretWord. This is then used as a comparison to the secretWord string and verify whether game is completed or not. The value of display can also be found in the console for debugging purposes.
 function displayInitialize() {
   var display = "";
+
   for (i=0; i<secretWord.length; i++) display+="_";
   return display;
 }
@@ -120,13 +121,17 @@ function gameStatus(count, display, secretWord) {
 //Once gameStatus() returns a value that shows user wins, a innerHTML is output to the DOM to say 'Guesser Wins!' Note the return value of gameStatus() is executed at every turn and saved in 'status' variable.
 function userWins() {
   var winner = document.getElementById('gameWinner');
-  winner.innerHTML = "Guesser Wins!";
+  winner.innerHTML = "GUESSER WINS!";
+  // Element visible after winner is announced
+  winner.style.display = 'flex';
 }
 
 //Once gameStatus() returns either a value that shows computer wins, a innerHTML is output to the DOM to say 'Secret Keeper Wins!'. Note the return value of gameStatus() is executed at every turn and saved in 'status' variable.
 function userLoses() {
   var winner = document.getElementById('gameWinner');
-  winner.innerHTML = "Secret Keeper Wins!";
+  winner.innerHTML = "SECRET KEEPER WINS!";
+  // Element visible after winner is announced
+  winner.style.display = 'flex';
 }
 
 
@@ -144,7 +149,11 @@ function resetGame() {
   document.getElementById('wrongGuesses').innerHTML = "";
   document.getElementById('wordChallenge').innerHTML = "";
 
-//A for loop is used to initialize since the 'list' object is of Array type and each element within the array must be initialized.
+  // Hide winner display 'flex' block
+  var winner = document.getElementById('gameWinner');
+  winner.style.display = 'none';
+
+  //A for loop is used to initialize since the 'list' object is of Array type and each element within the array must be initialized.
   for (i=0; i<guessesAllowed; i++) {
     var list = document.getElementsByClassName('hangmanDude')[0];
     list.getElementsByTagName('img')[i].style.display = "none";

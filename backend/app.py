@@ -1,6 +1,6 @@
 from flask import Flask, request, send_from_directory
 from wonderwords import RandomWord
-import os
+import os, re
 
 app = Flask(__name__)
 r = RandomWord()
@@ -16,13 +16,14 @@ def get_random_words(count, min_length=4, max_length=10, categories=None):
   )
 
 # Generate random words based on specified category
-random_nouns = get_random_words(100, categories=["noun"])
+random_nouns = get_random_words(200, categories=["noun"])
+clean_nouns = [word for word in random_nouns if re.match(r'^[A-Za-z]+$', word)]
 # random_verbs = get_random_words(100, include_categories=["verb"])
 
 @app.route('/nouns')
 def get_nouns():
   print("Headers: ", request.headers)
-  return random_nouns
+  return clean_nouns
 
 # @app.route('/verbs')
 # def get_verbs():
