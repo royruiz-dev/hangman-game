@@ -93,13 +93,13 @@ function rightGuess(guess) {
 function wrongGuess(wrongBin) {
   var wrongBucket = document.getElementById('wrongGuesses');
   var displayWrongGuesses = wrongBin.map(function(x){return "<div class='wrongLetter'>" + x + "</div>"}).join(', ');
-  wrongBucket.innerHTML = "Incorrect Guesses: " + displayWrongGuesses;
+  wrongBucket.innerHTML = "<b>Failed Guesses:</b> " + displayWrongGuesses;
 }
 
 //This function does a similar execution to wrongGuess(); however, it's simpler because it is not dealing with an array. Instead, it uses the count value incremented every time there is an incorrect guess to run innerHTML and output in the DOM the guesses remaining to the user playing.
 function guessesRemaining(count){
   var guessesLeft = document.getElementById('guessesLeft');
-  guessesLeft.innerHTML = "Guesses remaining: <div class='guessCount'>" + (guessesAllowed - count) + "</div>";
+  guessesLeft.innerHTML = "<b>Attempts Left:</b> <div class='guessCount'>" + (guessesAllowed - count) + "</div>";
 }
 
 //This function validates the letter (guess) being clicked on has not been saved as an incorrect or correct guess. If it has, then one of the conditions in line 108 will output true, which then returns false and wants the user to select another letter for guess. If it does not meet any of the conditions, then the function returns true and continues to next line of code.
