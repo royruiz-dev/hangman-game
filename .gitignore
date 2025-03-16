@@ -1,5 +1,6 @@
 logs
-linkedin-reach.sublime-project
-linkedin-reach.sublime-workspace
-build
 venv/
+/static/css/*
+!/static/css/.gitkeep
+/templates/*
+!/templates/.gitkeep
