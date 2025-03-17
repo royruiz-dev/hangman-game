@@ -1,97 +1,96 @@
 # Hangman Game Web App
-## OVERVIEW
-<hr>
-Enclosed you'll find all contents pertaining to the <b>HANGMAN GAME</b>! This is an application in which anyone can execute and play against the computer. The computer, also known as the "<i>Secret Keeper</i>" will pull a string from the following REST API: <a href="http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words">Word List</a>
-<br><br>
-Once the string value is stored, a game is automatically initialized. The user, also known as the "Guesser", has six tries to guess the secret word. If the "Guesser" guesses the secret word, he/she wins. If not, the "Secret Keeper" wins!
-<br><br>
-After a winner is determined, a new game is executed for another round of redemption!
-<br><br>
-For clarity purposes, the game rules are shown below.
+This is a web-based Hangman game where players try to guess the word before running out of attempts. It was originally created for LinkedIn REACH's 1-week competition but stopped working when their API became unavailable. I rebuilt it using Flask for the backend, while keeping JavaScript for the frontend.
 
-## GAME RULES
-<hr>
-<ol>
-<li>At the start of the game the computer/secret-keeper will choose a dictionary word.</li>
-<li>The guesser loses the game if they guess 6 letters that are not in the secret word.</li>
-<li>The guesser wins the game if they guess all letters in the secret word correctly and have not already lost the game per the conditions above.</li>
-</ol>
+### Game Rules
+- The game is automatically started when the page is loaded
+- The computer, also known as the *Secret Keeper*, will fetch a secret word
+- The user, also known as the *Player*, has 6 tries to guess the secret word
+- The user loses the game if 6 letters not in the secret word are guessed
+- The user wins the game if all letters in the secret word are guessed correctly
+- After a winner is determined, a new game is executed for another round of redemption!
 
-## HOW TO RUN THE GAME I BUILT
-<hr>
+### Features
+- Play Hangman with *randomly* fetched words
+- Responsive user interface (designed with Sketch/AI)
+- Interactive graphics for correct and incorrect guesses
+- Backend powered by Flask
+- Frontend built with HTML, CSS, and JavaScript
+- Lightweight and easy to deploy
+  
+### Technologies Used
+- **Programming Languages**: Python, JavaScript
+- **Backend:** Flask (Python)
+- **Frontend:** HTML (HAML), CSS (SASS), JavaScript
+- **Deployment Tools**: Bash scripts
+- **Web Server:** Nginx
 
-1. Configure your web server to proxy REST calls to the word API. In case of nginx, add location spec as follows:
+### Installation
+#### Prerequisites
+Ensure you have the following installed:
+- Python 3.x
+- pip (Python package manager)
+- virtualenv (optional but recommended)
+- Nginx (for serving the application)
 
-```javascript
-location = /words {
-  proxy_pass http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words;
-}
+#### Clone the Repository
+```bash
+git clone https://github.com/royruizzy/hangman-game-webApp.git
+cd hangman-game-webApp
 ```
-* Location does not have to be at the root level on the web server. See sample configuration for nginx in config/proxy.conf.
 
-2. Customize src/js/config.js
-  a. Modify variable `url` as necessary to refer to the location of the proxy to the word API.
-  b. Set the desired level of difficulty (default 8)
-  c. Set min and max word length (default 4 and 8, respectively)
-3. Change the email of the administrative contact in index.haml.
-4. Build the project files using CodeKit, https://codekitapp.com.
-  a. Drop the project folder on CodeKit window.
-  b. Click refresh button.
-  c. Click Build Project button.
-5. Copy contents of `build/js/`, `build/img/` folders, and files `build/index.html` and `build/style.css` to the web server.
-6. Navigate to the corresponding URL.
+#### Python Dependencies
+Set up a virtual environment and install the required Python packages:
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+pip install -r requirements.txt
+```
 
+### Deploy the Application
+After setting up the Python environment, deploy the application by running the deploy script:
+```bash
+./deploy.sh
+```
+This script will:
 
-## FEATURES
-<hr>
+1. Install required system dependencies like HAML and SASS
+2. Build assets such as HTML and CSS
+3. Start the Nginx server using the proxy configuration from the `config/` folder
+4. Launch the Flask application using `python app.py`
 
-The REST call can be filtered by setting certain parameters. These parameters are `difficulty`, `minLength`, `maxLength`, `start`, and `count`. The first three are the only ones you need to worry about. Fortunately, I've taken care of `start` and `count` to always return a random word from the data pull.
+Once the application is running, you can access the game at http://localhost:8080/.
 
-| URL Parameter |  Legal Values  |  Purpose  |
-| :-----------: |:--------------:| :---------|
-| `difficulty`    | Integer from 1-10  | Filters returned words based on the difficulty level<br>provided: 1 is the lowest level and 10 is the highest<br>level.|
-| `minLength`     | Integer >= 0   | Filters returned words to ensure they are at least<br>as long as the provided length. Providing 0 will<br>return all words, providing a number larger than<br>the length of the longest word will return an empty<br>result.|
-| `maxLength`     | Integer >= 0   | Filters returned words to ensure they are shorter<br>than the provided length. Providing 0 will return an<br>empty result, providing a number larger than the<br>length of the longest word will return all words.|
+To stop the NGINX server after exiting the application, run the following command:
+```bash
+./scripts/nginx_stop.sh
+```
 
-## THE USER INTERFACE
-<hr>
-I built a really nice user interface using both Adobe Illustrator and Sketch App to give you a great seamless experience. I, personally, like the color choice. Hopefully, you do as well!
-<br><br>
-All you do is open the game in your browser, and the game will initialize for you! Instead of typing the letters in a text box, just click on the letters you choose as guess, and the interface will populate, accordingly.
-<br><br>
-You can keep track of the guesses remaining on the left panel as well as the incorrect guesses you've selected. Keep in mind if you try to select a letter you've already chosen, it won't let you. It'll just ignore it! It'll feel seamless as described.
-<br><br>
-Let's just I wanted the hangman to resemble a man (silhouette form) that is scared of the pollution in the air, always "on-call", and ready to go to work! I figured why not hang someone with all of those things on him. I know, it's a bit overkill :)
-<br><br>
-Please note the interface is simplistic enough that you can split the window in half, so you can play and also do other work on the side!
+### Game Logic
 
-## ORDER OF FUNCTIONS
-<hr>
-All functions have been <b>refactored</b>. Here's an overview of the working order of functions. Please note all functions have been commented accordingly with details to understand the flow of the game and my thought process.
-<br><br>
+All functions have been **refactored**. Below is an overview of the order in which the functions execute, along with key details to understand the game logic. Each function is commented to help explain its role in the process of the game:
 
 - `fetchWord()`
 - `reqListener()`
-  - if error, `blockScreen()`
-  - if pass, fetch response and `initializeNewGame()`
+  - if error, call `blockScreen()`
+  - if successful, fetch the response and call `initializeNewGame()`
     - `resetGame()`
       - `guessesRemaining()`
     - `randomizeWord()`
     - `displayInitialize()`
     - `displayUnderscores()`
-- At DOMContentLoaded, `doGuess()`
+- On DOMContentLoaded, call `doGuess()`
   - Run until game is complete
     - `validateGuess()`
-      - Guess is right
+      - If guess is correct:
         - `rightGuess()` *For console purposes only*
         - `displayString()`
-      - Guess is wrong
+      - If guess is incorrect:
         - `wrongGuess()`
         - `guessesRemaining()`
         - `displayHangman()`
     - `gameStatus()`
     - `consoleOutput()` *For console purposes only*
-  - Game is complete
-    - If guesser wins, `userWins()`
-    - If secret keeper wins, `userLoses()`
-- Click on new Game via `initializeNewGame()`
+  - If the game is complete:
+    - If the player wins, call `userWins()`
+    - If the secret keeper wins, call `userLoses()`
+- To start a new game, call `initializeNewGame()`
