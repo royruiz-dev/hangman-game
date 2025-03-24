@@ -34,8 +34,8 @@ Ensure you have the following installed:
 
 #### Clone the Repository
 ```bash
-git clone https://github.com/royruizzy/hangman-game-webApp.git
-cd hangman-game-webApp
+git clone https://github.com/royruiz-dev/hangman-game.git
+cd hangman-game
 ```
 
 #### Python Dependencies
