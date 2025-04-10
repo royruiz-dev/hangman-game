@@ -1,11 +1,9 @@
-from flask import Flask, request, send_from_directory, render_template
+from flask import Flask, request, render_template
 from wonderwords import RandomWord
-import os, re
+import re
 
 app = Flask(__name__)
 r = RandomWord()
-
-STATIC_FOLDER = os.path.join(os.getcwd(), 'static')
 
 def get_random_words(count, min_length=4, max_length=10, categories=None):
   return r.random_words(
@@ -28,12 +26,6 @@ def get_nouns():
 @app.route('/')
 def index():
   return render_template("index.html")
-
-# Serves static files from the STATIC_FOLDER directory.
- # Matches any file request and returns the corresponding file.
-@app.route('/<path:filename>')
-def serve_static(filename):
-  return send_from_directory(STATIC_FOLDER, filename)
 
 if __name__ == '__main__':
   app.run(debug=True, port=5000)

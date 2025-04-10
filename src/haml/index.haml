@@ -5,10 +5,10 @@
     %link{rel: "icon", type: "image/x-icon", href: "/static/favicon.ico"}
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name="apple-mobile-web-app-capable" content="yes")
-    %link(rel='stylesheet' href='css/style.css')
-    %script(src='js/config.js')
-    %script(src='js/app.js')
-    %script(src='js/init.js')
+    %link(rel='stylesheet' href='/static/css/style.css')
+    %script(src='/static/js/config.js')
+    %script(src='/static/js/app.js')
+    %script(src='/static/js/init.js')
   %body
     #errorOverlay
       .errorText
@@ -21,24 +21,24 @@
       .welcome
         Welcome to the Hangman Game!
       .button-wrapper
-        %img#newGame.button(src='img/newgame-button.png')
+        %img#newGame.button(src='/static/img/newgame-button.png')
 
       //All elements pertaining to the Hangman image in center of page
       .hangmanBuild
 
         //This controls the elements involving the Hangman silhouette. The image tags are initialized to not display. They display as the user guesses incorrectly
         .hangmanDude
-          %img.hangmanHead(src='img/head.png')
-          %img.hangmanBody(src='img/body.png')
-          %img.hangmanLeftArm(src='img/left-arm.png')
-          %img.hangmanRightArm(src='img/right-arm.png')
-          %img.hangmanLeftLeg(src='img/left-leg.png')
-          %img.hangmanRightLeg(src='img/right-leg.png')
-          %img.scaffoldTop-and-Rope(src='img/Scaffold-top-rope.png')
+          %img.hangmanHead(src='/static/img/head.png')
+          %img.hangmanBody(src='/static/img/body.png')
+          %img.hangmanLeftArm(src='/static/img/left-arm.png')
+          %img.hangmanRightArm(src='/static/img/right-arm.png')
+          %img.hangmanLeftLeg(src='/static/img/left-leg.png')
+          %img.hangmanRightLeg(src='/static/img/right-leg.png')
+          %img.scaffoldTop-and-Rope(src='/static/img/Scaffold-top-rope.png')
         .hangmanScaffold
-          %img(src='img/Scaffold-side.png')
+          %img(src='/static/img/Scaffold-side.png')
         .hangmanBottom
-          %img.base(src='img/Base-and-shadow.png')
+          %img.base(src='/static/img/Base-and-shadow.png')
 
       //Contains all elements in the bottom center of page. It populates as the user plays the game. It also uses the text in 'alphabet' as the guesses when performing 'click' event
       .wordChallenge-wrapper
