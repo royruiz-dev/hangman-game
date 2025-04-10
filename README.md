@@ -1,6 +1,8 @@
 # Hangman Game Web App
 This is a web-based Hangman game where players try to guess the word before running out of attempts. It was originally created for LinkedIn REACH's 1-week competition but stopped working when their API became unavailable. I rebuilt it using Flask for the backend, while keeping JavaScript for the frontend.
 
+![App Demo](assets/app-demo.gif)
+
 ### Game Rules
 - The game is automatically started when the page is loaded
 - The computer, also known as the *Secret Keeper*, will fetch a secret word
@@ -58,11 +60,11 @@ This script will:
 3. Start the Nginx server using the proxy configuration from the `config/` folder
 4. Launch the Flask application using `python app.py`
 
-Once the application is running, you can access the game at http://localhost:8080/.
+Once the application is running, you can access the game at http://localhost/.
 
-To stop the NGINX server after exiting the application, run the following command:
+After exiting the application, **stop** the NGINX server and **deactivate** the virtual environment by running the following:
 ```bash
-./scripts/nginx_stop.sh
+./scripts/nginx_stop.sh && deactivate
 ```
 
 ### Game Logic
