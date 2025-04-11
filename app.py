@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request
 from wonderwords import RandomWord
 import re
 
@@ -22,11 +22,5 @@ def get_nouns():
   print("Headers: ", request.headers)
   return clean_nouns
 
-# Serve the index.html from the templates folder
-@app.route('/')
-def index():
-  return render_template("index.html")
-
 if __name__ == '__main__':
-  app.run(debug=True, port=5000)
-  # app.run(debug=True, host="0.0.0.0", port=5000)
+  app.run(host="127.0.0.1", port=5000)
